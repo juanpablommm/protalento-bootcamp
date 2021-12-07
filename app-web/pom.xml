@@ -8,4 +8,13 @@
   <artifactId>app-web</artifactId>
   <packaging>war</packaging>
   <name>app web backoffice</name>
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.1</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
