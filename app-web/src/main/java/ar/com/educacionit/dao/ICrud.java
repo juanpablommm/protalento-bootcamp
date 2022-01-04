@@ -9,6 +9,9 @@ public interface ICrud {
 	
 	public Socios findById(Long id);
 	
+	
+	public Socios[] findAll();
+	
 //	depues completo los demas
 
 }
