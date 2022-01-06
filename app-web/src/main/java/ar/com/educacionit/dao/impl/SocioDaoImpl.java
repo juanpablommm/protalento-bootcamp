@@ -3,9 +3,16 @@ package ar.com.educacionit.dao.impl;
 import ar.com.educacionit.dao.SociosDao;
 import ar.com.educacionit.domain.Socios;
 
-public class SocioDaoImpl implements SociosDao {
+public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao {
 
-//	private String conexion;
+	public SocioDaoImpl() {
+		super("socios");//es la tabla donde va a trabajar
+	}
+
+		
+	
+	
+	/*
 
 	public Socios save(Socios socio) {
 
@@ -52,11 +59,5 @@ public class SocioDaoImpl implements SociosDao {
 		
 	}
 
-	/*
-	public Socios selectCustom() {
-		String sql = "SELECT NOMBRE, APELLIDO FROM SOCIOS";
-		System.out.println("Ejecutando sql:" + sql);
-		return new Socios(3l, "jimy", "artiaga", "gymixxs@gamil.com", "avenida siempre viva 14", 1l);
-	}
 */
 }

@@ -7,7 +7,7 @@ import ar.com.educacionit.services.SociosService;
 
 public class SociosServiceImpl extends AbstractBaseService<Socios> implements SociosService {
 
-
+	
 	public SociosServiceImpl() {
 		super(new SocioDaoImpl());
 	}
