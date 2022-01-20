@@ -9,6 +9,25 @@ public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao {
 		super("socios");//es la tabla donde va a trabajar
 	}
 
+	@Override
+	public String getSaveSQL(Socios socios) {
+		
+		
+//		lo particular del sql
+		return ("(nombre,apellido,email,direccion,paises_id) VALUES (" + socios.getNombre() + "," + socios.getApellido() + "," + socios.getEmail() + "," + socios.getDireccion() + "," + socios.getPaisesId() + ")");
+	}
+
+	@Override
+	public String getUpdateSQL(Socios socios) {
+		String sql = "nombre= '" + socios.getNombre() + "',";
+		sql = sql + "apellido= '" + socios.getApellido() + "',";
+		sql = sql + "email= '" + socios.getEmail() + "',";
+		if(socios.getPaisesId() != null) {
+			sql = sql + "paises_id= '" + socios.getPaisesId() + "'";
+		}
+		return sql;
+	}
+
 		
 	
 	

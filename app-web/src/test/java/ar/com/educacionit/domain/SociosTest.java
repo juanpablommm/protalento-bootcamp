@@ -22,12 +22,20 @@ public class SociosTest {
 		SociosService service = new SociosServiceImpl();
 		Socios socio = new Socios(nombre, apellido, email, email, pais);
 		service.save(socio);
+		
+		socio.setApellido("nuevo apellido");
+		socio.setNombre("nuevo nombre");
+		socio.setEmail("email@email.com.ar");
 
+		service.update(socio);
+		
 		CategoriaService cservice = new CategoriaServiceImpl();
 		Categorias categoria = new Categorias("Televisores", "abc1234");
 		cservice.save(categoria);
 
-//		usar el findAll()
+		categoria.setCodigo("10000");
+		categoria.setDescripcion("nueva descripcion");
+		cservice.update(categoria);
 
 		
 
