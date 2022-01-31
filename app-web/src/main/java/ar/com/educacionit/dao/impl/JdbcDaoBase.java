@@ -3,13 +3,18 @@ package ar.com.educacionit.dao.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.educacionit.dao.GenericDao;
+import ar.com.educacionit.dao.util.DTOUtils;
 import ar.com.educacionit.domain.Entity;
 import ar.com.educacionit.exceptions.DuplicatedException;
 import ar.com.educacionit.exceptions.GenericException;
+import ar.com.educacionit.jdb.AdministradorDeConexiones;
 
 /*
  * las t son entidades que representan tablas
@@ -116,23 +121,25 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 	
 	public abstract String getUpdateSQL(T entity);
 
-	public List<T> findAll() {
+	public List<T> findAll() throws GenericException {
+		List<T> lista = new ArrayList<T>();
 		String sql = "SELECT *FROM " + this.tabla;
-		System.out.println(sql);
-//		la informacion debe venir desde la base de datos
-		
-//		supongo que hay dos registros
-		List<T> instances = new ArrayList<T>();
-		T insctance;
-		try {
-			insctance = this.clazz.getDeclaredConstructor().newInstance();
-			insctance.setId(1l);
-			instances.add(insctance);
-			instances.add(insctance);
+//		necesito las interface
+//		connection
+//		steatement
+//		resulset
+		try (Connection connection = AdministradorDeConexiones.obtenerConexion();){
+			
+			try (Statement statement = connection.createStatement()){
+				
+				try (ResultSet resultSet = statement.executeQuery(sql)){
+					
+					lista = DTOUtils.populateDTOs(this.clazz, resultSet);
+				}
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return instances;
+			throw new GenericException("No se pudo consultar: " + sql, e);
+		}return lista;
 	}
 
 }

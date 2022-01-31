@@ -33,6 +33,12 @@
 			<version>8.0.28</version>
 		</dependency>
 
+		<dependency>
+			<groupId>protalento-bootcamp</groupId>
+			<artifactId>app.domain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 

@@ -17,5 +17,5 @@ public interface GenericDao<T> {
 
 	public void update(T entity);
 
-	public List<T> findAll();
+	public List<T> findAll() throws GenericException;
 }

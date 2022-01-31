@@ -7,5 +7,11 @@ public class GenericException extends Exception {
 		
 	}
 
+	public GenericException(String msj, Throwable source) {
+		super(msj, source);
+		
+	}
+
+	
 	
 }
