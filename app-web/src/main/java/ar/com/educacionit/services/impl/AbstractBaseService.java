@@ -24,11 +24,7 @@ public class AbstractBaseService<T> implements GenericService<T>{
 			entity = genericDao.getOne(id);
 		} catch (GenericException e) {
 			throw new ServiceException("Error de DB al intentar obtener entity id=" + id, e);
-		}finally {
-//			siempre se ejecuta
-			entity = null;
-		}
-		return entity;
+		}return entity;
 	}
 
 	public void delete(Long id) throws ServiceException{
@@ -40,29 +36,30 @@ public class AbstractBaseService<T> implements GenericService<T>{
 		
 	}
 
-	public T save(T entity) throws ServiceException {
+	public T save(T entity) throws ServiceException{
 		try {
 			return genericDao.save(entity);
-		} catch (DuplicatedException de) {
+		} catch (DuplicatedException | GenericException de) {
 //			relanzo la excpetion como una serviceException
 //			que contine la exeption original
 			throw new ServiceException("C101", de);
 		}
 	}
 
-	public void update(T entity) {
-		genericDao.update(entity);
+	public void update(T entity) throws ServiceException {
+		try {
+			genericDao.update(entity);
+		} catch (GenericException | DuplicatedException e) {
+			throw new ServiceException("Error actualizando " + entity, e);
+		}
 		
 	}
 
-	public List<T> findAll() {
-		// TODO Auto-generated method stub
+	public List<T> findAll() throws ServiceException {
 		try {
 			return genericDao.findAll();
 		} catch (GenericException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ServiceException("Error consultando listado ", e);
 		}
-		return null;
 	}
 }

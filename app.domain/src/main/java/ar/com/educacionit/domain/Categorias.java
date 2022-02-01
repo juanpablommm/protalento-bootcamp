@@ -6,6 +6,7 @@ public class Categorias implements Entity{
 	private Long id;
 	private String descripcion;
 	private String codigo;
+	private Long habilitada;
 	
 	public Categorias() {
 		// TODO Auto-generated constructor stub
@@ -17,11 +18,18 @@ public class Categorias implements Entity{
 		this.codigo = codigo;
 	}
 	
-	public Categorias(String descripcion, String codigo) {
+	public Categorias(String descripcion, String codigo, Long habilitada) {
 		this.descripcion = descripcion;
 		this.codigo = codigo;
+		this.habilitada = habilitada;
 	}
 
+	public Categorias(Long id, String descripcion, String codigo, Long habilitada) {
+		this.id = id;
+		this.descripcion = descripcion;
+		this.codigo = codigo;
+		this.habilitada = habilitada;
+	}
 
 	public Long getId() {
 		return id;
@@ -45,6 +53,15 @@ public class Categorias implements Entity{
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	
+	
+	public Long getHabilitada() {
+		return habilitada;
+	}
+
+	public void setHabilitada(Long habilitada) {
+		this.habilitada = habilitada;
 	}
 
 	@Override

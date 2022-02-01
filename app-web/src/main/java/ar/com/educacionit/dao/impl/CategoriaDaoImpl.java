@@ -1,5 +1,8 @@
 package ar.com.educacionit.dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import ar.com.educacionit.dao.CategoriaDao;
 
 import ar.com.educacionit.domain.Categorias;
@@ -12,43 +15,34 @@ public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements Categor
 	}
 
 	@Override
-	public String getSaveSQL(Categorias entity) {
-		
-		
+	public String getSaveSQL() {
+
 //		lo particular del sql
-		return ("(descripcion, codigo) VALUES (" + entity.getDescripcion() + "," + entity.getCodigo() + "," +  ")");
+		return ("(descripcion, codigo, habilitada) VALUES (?, ?, ?)");
 	}
 
 	@Override
-	public String getUpdateSQL(Categorias entity) {
-		String sql = "descripcion= '" + entity.getDescripcion() + "',";
-		sql = sql + "codigo= '" + entity.getCodigo() + "',";
-		return sql;
+	protected void save(PreparedStatement preparedStatement, Categorias entity) throws SQLException {
+		// resivo esl preparedStatement con el sql seteado (insert into categorias (
+		// atributo1) values ()
+		preparedStatement.setString(1, entity.getDescripcion());
+		preparedStatement.setString(2, entity.getCodigo());
+		preparedStatement.setLong(3, entity.getHabilitada());
 	}
 
+	@Override
+	public String getUpdateSQL() {
+		return "descripcion = ?, habilitada = ?";
 		
-	/*
-	 * public Categorias getOne(Long id) { String sql =
-	 * "SELECT *FROM CATEGORIA  WHERE ID = " + id; System.out.println("ejecutando "
-	 * + sql); return new Categorias(id, "categoria 1", "abc000"); }
-	 * 
-	 * public void delete(Long id) { // TODO Auto-generated method stub
-	 * 
-	 * }
-	 * 
-	 * public Categorias save(Categorias entity) { String sql =
-	 * "INSERT INTO CATEGORIA(descripcion, codigo) VALUES ('" +
-	 * entity.getDescripcion() + "', '" + entity.getCodigo() + "')";
-	 * System.out.println("Ejecutando sql:" + sql);
-	 * 
-	 * entity.setId(1l); return entity; }
-	 * 
-	 * public void update(Categorias entity) { // TODO Auto-generated method stub
-	 * 
-	 * }
-	 * 
-	 * public Categorias[] findAll() { // TODO Auto-generated method stub return
-	 * null; }
-	 */
+	}
+
+	@Override
+	protected void update(PreparedStatement preparedStatement, Categorias entity) throws SQLException {
+		preparedStatement.setString(1, entity.getDescripcion());
+		preparedStatement.setLong(2, entity.getHabilitada());
+		
+	}
+
+	
 
 }
