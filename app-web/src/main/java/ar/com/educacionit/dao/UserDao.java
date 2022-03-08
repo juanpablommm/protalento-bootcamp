@@ -1,5 +1,7 @@
 package ar.com.educacionit.dao;
 
-public interface UserDao {
+import ar.com.educacionit.domain.Users;
+
+public interface UserDao extends GenericDao<Users>{
 
 }

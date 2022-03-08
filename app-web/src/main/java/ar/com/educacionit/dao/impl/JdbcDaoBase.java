@@ -1,6 +1,5 @@
 package ar.com.educacionit.dao.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
