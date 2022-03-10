@@ -3,21 +3,20 @@ package com.educacionit.files;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Iterator;
 
 import com.educacionit.exeptions.ParseException;
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPage;
 import com.itextpdf.text.pdf.PdfWriter;
-import ar.com.educacionit.domain.Articulos;
+
+import ar.com.educacionit.domain.Entity;
 
 public class PDFWrite extends BaseFile {
 
@@ -25,58 +24,71 @@ public class PDFWrite extends BaseFile {
         super(path);
     }
 
-    public void writePDF(Collection<Articulos> collection) throws ParseException {
+    public void writePDF(Collection<? extends Entity> collection) throws ParseException {
 
         if (new File(super.filePath).isFile()) {
-            throw new ParseException("Error!! ya exite un archivo " + super.filePath);
+            throw new ParseException("Error, ya existe un PDF con el mismo nombre en la misma ruta");
         } else {
-
             Document document = new Document();// create document
             try {
-                PdfWriter.getInstance(document, new FileOutputStream(super.filePath));// make PDFWrite for write
-                document.open();// open the document
 
-                Paragraph tittle = new Paragraph("Articulos Registrados en el Sistemas", FontFactory.getFont("arial", // fuente
-                        14, // tamaño
-                        Font.UNDEFINED, // estilo
-                        BaseColor.RED)); // color));
-                tittle.setAlignment(Element.ALIGN_CENTER);// position of title
-                document.add(tittle);
-
-                PdfPTable table = new PdfPTable(7);// create table, i send by parameter the amount
-                table.setWidthPercentage(110);// width of table
-
-//             create cells
-                table.addCell(this.makeCell("TITULO", 10F, 6.5F));
-                table.addCell(this.makeCell("CODIGO", 10F, 6.5F));
-                table.addCell(this.makeCell("FECHA", 10F, 6.5F));
-                table.addCell(this.makeCell("PRECIO", 10F, 6.5F));
-                table.addCell(this.makeCell("STOCK", 10F, 6.5F));
-                table.addCell(this.makeCell("MARCAS_ID", 10F, 6.5F));
-                table.addCell(this.makeCell("CATEGORIAS_ID", 10F, 6.5F));
-
-                Iterator<Articulos> iterator = collection.iterator();// create iterator
-                while (iterator.hasNext()) {
-                    Articulos articulos = iterator.next();
-                    table.addCell(this.makeCell(articulos.getTitulo(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getCodigo(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getFechaCreacion().toString(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getPrecio().toString(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getStock().toString(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getMarcaId().toString(), 10F, 6.5F));
-                    table.addCell(this.makeCell(articulos.getCategoriaId().toString(), 10F, 6.5F));
+                PdfWriter.getInstance(document, new FileOutputStream(super.filePath));
+                document.open();
+                String[] titles = this.getTitles(collection);
+                Iterator<? extends Entity> iterator = collection.iterator();
+                PdfPTable table = new PdfPTable(titles.length);
+                for (String title : titles) {
+                    table.addCell(this.makeCell(title, 10f, 6.5f));
                 }
-                document.add(table);// send the table a document
-                System.out.println("Se ha creado el registro");
+                while (iterator.hasNext()) {
+                    Entity entity = iterator.next();
+                    this.addRecord(entity, titles, table);
+
+                }
+                document.add(table);
+                System.out.println("Docuemto Creado con Exito");
             } catch (FileNotFoundException | DocumentException e) {
-                throw new ParseException("Error, no se pude crear el pdf, revise nombre del archivo y extension .pdf");
+                throw new ParseException("Error al create PDF " + e);
             } finally {
                 document.close();
             }
         }
     }
 
-    // Method for make personalized cell
+    // Method for get titles
+    private String[] getTitles(Collection<? extends Entity> collection) {
+        String nombres = "";
+        Iterator<? extends Entity> iterator = collection.iterator();
+        if (iterator.hasNext()) {
+            Field[] fields = iterator.next().getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if (!field.getName().equals("id")) {
+                    nombres += field.getName() + ",";
+                }
+            }
+        }
+        return nombres.split(",");
+    }
+
+    private void addRecord(Entity entity, String[] titles, PdfPTable table) {
+        Field[] fields = entity.getClass().getDeclaredFields();// get Fields
+        for (Field field : fields) {
+            for (String title : titles) {
+                if (field.getName().equals(title)) {
+                    field.setAccessible(true);// provide access the fields
+                    try {
+                        // add each cell with the date of each field and it is null
+//                        add a String
+                        table.addCell(this.makeCell((field.get(entity) == null) ? "null" : field.get(entity).toString(), 10f, 6.5f));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+// Method for make personalized cell
     private PdfPCell makeCell(String titulo, Float tamanoCell, Float tamanoLetra) {
         Paragraph paragraph = new Paragraph(titulo);
         paragraph.getFont().setSize(tamanoLetra);

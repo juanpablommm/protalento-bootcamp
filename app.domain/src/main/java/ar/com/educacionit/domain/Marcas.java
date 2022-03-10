@@ -1,6 +1,6 @@
 package ar.com.educacionit.domain;
 
-public class Marcas {
+public class Marcas implements Entity {
 
 	private Long id;
 	private String marca;
@@ -50,6 +50,18 @@ public class Marcas {
 	public String toString() {
 		return "Marcas [id=" + id + ", marca=" + marca + ", codigo=" + codigo + ", habilitada=" + habilitada + "]";
 	}
+
+    @Override
+    public Long getId() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setId(Long id) {
+        // TODO Auto-generated method stub
+        
+    }
 	
 	
 }
