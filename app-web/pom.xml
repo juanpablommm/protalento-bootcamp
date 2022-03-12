@@ -55,6 +55,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- api para encriptar -->
+		<dependency>
+			<groupId>at.favre.lib</groupId>
+			<artifactId>bcrypt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+
 	</dependencies>
 
 

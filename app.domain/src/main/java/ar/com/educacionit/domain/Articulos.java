@@ -10,9 +10,9 @@ public class Articulos implements Entity{
 	private String codigo;
 	private Double precio;
 	private Long stock;
-	private Long marcaId;
-	//private Marcas marca;
-	private Long categoriaId;
+	private Long marcasId;
+	private Marcas marcas;
+	private Long categoriasId;
 	private Categorias categoria;
 	
 	//hacia la db
@@ -23,8 +23,8 @@ public class Articulos implements Entity{
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcaId;
+		this.categoriasId = categoriaId;
 	}
 
 	// desde la db
@@ -36,8 +36,8 @@ public class Articulos implements Entity{
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcaId;
+		this.categoriasId = categoriaId;
 	}
 	//constructor
 	//alt+shift+s
@@ -103,20 +103,20 @@ public class Articulos implements Entity{
 		this.stock = stock;
 	}
 
-	public Long getMarcaId() {
-		return marcaId;
+	public Long getMarcasId() {
+		return marcasId;
 	}
 
-	public void setMarcaId(Long marcaId) {
-		this.marcaId = marcaId;
+	public void setMarcasId(Long marcaId) {
+		this.marcasId = marcaId;
 	}
 
-	public Long getCategoriaId() {
-		return categoriaId;
+	public Long getCategoriasId() {
+		return categoriasId;
 	}
 
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setCategoriasId(Long categoriaId) {
+		this.categoriasId = categoriaId;
 	}
 
 	
@@ -132,9 +132,25 @@ public class Articulos implements Entity{
 		this.precio = precio;
 	}
 
-	public String toString() {
+	public Marcas getMarcas() {
+        return marcas;
+    }
+
+    public void setMarcas(Marcas marcas) {
+        this.marcas = marcas;
+    }
+
+    public Categorias getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categorias categoria) {
+        this.categoria = categoria;
+    }
+
+    public String toString() {
 		return "Articulo [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", codigo=" + codigo
-				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
+				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcasId + ", categoriaId=" + categoriasId
 				+ "]";
 	}
 	

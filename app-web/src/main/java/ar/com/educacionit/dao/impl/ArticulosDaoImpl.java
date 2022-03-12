@@ -30,8 +30,8 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 		preparedStatement.setDate(3, new java.sql.Date(entity.getFechaCreacion().getTime()));
 		preparedStatement.setDouble(4, entity.getPrecio());
 		preparedStatement.setLong(5, entity.getStock());
-		preparedStatement.setLong(6, entity.getMarcaId());
-		preparedStatement.setLong(7, entity.getCategoriaId());
+		preparedStatement.setLong(6, entity.getMarcasId());
+		preparedStatement.setLong(7, entity.getCategoriasId());
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 		preparedStatement.setString(1, entity.getTitulo());
 		preparedStatement.setDouble(2, entity.getPrecio());
 		preparedStatement.setLong(3, entity.getStock());
-		preparedStatement.setLong(4, entity.getMarcaId());
-		preparedStatement.setLong(5, entity.getCategoriaId());
+		preparedStatement.setLong(4, entity.getMarcasId());
+		preparedStatement.setLong(5, entity.getCategoriasId());
 		
 	}
 

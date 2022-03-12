@@ -4,24 +4,8 @@
 	</head>
 	<body>
 		<h1>Clase 36</h1>
-		<h2>subtitulo</h2>
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-		</ul>
-		
-		<%
-// 			es codigo java que se compila
-// 			y se muestra como html
-			for(int i = 0; i < 4; i++){
-			    out.print("i vale: " + i + "<br>");
-			}
-
-		%>
 		<!-- creo formulario -->
-		<form action="<%=request.getContextPath()%>/listado"
+		<form action="<%=request.getContextPath()%>/ListadoServlet"
 		method="POST">
 		<!-- POR QUE METODO VAMOS A GENERAR LA PETICION 
 		POR POST SE PASAN LOS PARAMETROS POR FORMULARIO, PSANA DE UNA MAERA OCUALTA
@@ -31,7 +15,7 @@
 			<input type="submit" value="Pedir listado por post"/>
 		</form>
 		
-		<form action="<%=request.getContextPath()%>/listado" method="GET">
+		<form action="<%=request.getContextPath()%>/ListadoServlet" method="GET">
 			
 			<input type="submit" value="Pedir listado por get" /> 
 		</form>
