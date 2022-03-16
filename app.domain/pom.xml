@@ -8,8 +8,4 @@
   <artifactId>app.domain</artifactId>
   <name>modulo de entidades</name>
   
-  <properties>
-  <maven.compiler.target>11</maven.compiler.target>
-  <maven.compiler.source>11</maven.compiler.source>
-  </properties>
 </project>

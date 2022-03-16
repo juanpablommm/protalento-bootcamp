@@ -5,13 +5,20 @@
   <artifactId>app-parent</artifactId>
   <packaging>pom</packaging>
   <name>primer artefacto creado con maven+eclipse+github</name>
+  
+  
+  <properties>
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+	</properties>
+  
   <modules>
-  	<module>pruebas</module>
+  	 <!-- <module>pruebas</module> -->	
   	<module>app-web</module>
-  	<module>practica-adicional-semana9</module>
-  	<module>practica-adicional-semana11</module>
+  <!--  <module>practica-adicional-semana9</module> -->	
+  	 <!-- <module>practica-adicional-semana11</module> -->
   	<module>app.domain</module>
-  	<module>practica-adicional-semana13</module>
+  <!--	<module>practica-adicional-semana13</module> -->	
   </modules>
   
 </project>
