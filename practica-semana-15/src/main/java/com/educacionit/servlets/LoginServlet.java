@@ -27,8 +27,8 @@ public class LoginServlet extends HttpServlet {
             if(!recuperarDatos(persona, req)) {
                 req.setAttribute("Mensaje", "Error en el registro de datos,"
                         + " revise nuevamente su documento debe de tener 10 dijitos,"
-                        + " no puede haber una edad menor a 1 año, y no puede haber una feha de nacimiento"
-                        + " del año 2022");
+                        + " no puede haber una edad menor a 1, y no puede haber una feha de nacimiento"
+                        + " del 2022");
                 getServletContext().getRequestDispatcher("/errorLogin.jsp").forward(req, resp);   
             }else {
                 personaDao.insert(persona);
