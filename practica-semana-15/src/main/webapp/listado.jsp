@@ -8,7 +8,7 @@
 <%@page import="java.util.Collection"%>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listado</title>
 </head>
