@@ -12,20 +12,13 @@ public class Conexion{
     private static String user = "gttlypiodntprh";
     private static String password = "96e8368cabed56e6d51209e0a5f8790c19f971e5e5ae6ca190afe8458d8122b8";
     
-    
-    
     public static Connection coneccion() throws GenericExceptions {
         Connection connection = null;
         try {
-            
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException  e) {
             throw new GenericExceptions("Error!! no se puede obtener conexion con la db: ", e);
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return connection;
+        }return connection;
     }
 }

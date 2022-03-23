@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Registro</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 <body style="background-image: url('./imagenes/fondos-web.webp')">
@@ -50,8 +50,12 @@
 
 				<br>
 				<br>
-				<button type="submit">Enviar</button>
+				<input type="submit" name="registrar" value="Registrar"></input>
 			</div>
+		</form>
+		<br>
+		<form action="<%=request.getContextPath()%>/listado.jsp">
+			<input type="submit" name="listado" value="Listado"></input>
 		</form>
 	</main>
 

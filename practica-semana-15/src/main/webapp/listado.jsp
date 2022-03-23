@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.educacionit.dao.PersonaDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.educacionit.dao.PersonaDaoImpl"%>
@@ -11,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listado</title>
 </head>
-<body style="background-image: url('./imagenes/fondos-web.webp')">
+<body>
 
 	<main>
 		<h1>Registros</h1>
@@ -33,10 +34,9 @@
 <!-- 			bloque java para obeneter cada persona de la lista registrada  -->
 <!-- 			en la db -->
 			<%
-			Object object = request.getAttribute("Listado");
-			@SuppressWarnings("unchecked")
-			List<Persona> lista = (List<Persona>) object;
-			for (Persona persona : lista) {
+			PersonaDao personaDao = new PersonaDaoImpl();
+			List<Persona> listaPersonas = personaDao.selectFrom();
+			for (Persona persona : listaPersonas) {
 			%>
 			<tr>
 				<td><label><%=persona.getNombre()%></label></td>

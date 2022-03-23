@@ -1,7 +1,5 @@
 package com.educacionit.dao;
 
-import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +32,7 @@ public class PersonaDaoImpl implements PersonaDao {
     }
 
     public List<Persona> selectFrom() throws GenericExceptions {
-        List<Persona> lista = new ArrayList();
+        List<Persona> lista = new ArrayList<>();
         String sql = "SELECT *FROM users";
         try (PreparedStatement preparedStatement = coneccion().prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -78,15 +76,5 @@ public class PersonaDaoImpl implements PersonaDao {
 
     public Persona delect(Long id) throws GenericExceptions {
         return null;
-    }
-
-    public static void main(String[] args) throws GenericExceptions {
-        PersonaDaoImpl personaDaoImpl = new PersonaDaoImpl();
-        Date fecha = new Date(0);
-        System.out.println(fecha);
-//        personaDaoImpl.insert(new Persona("juancho", "pablo", "asoajso", 21221l, 13l, fecha));
-        personaDaoImpl.selectFrom();
-        System.out.println(personaDaoImpl.selectFrom());
-        System.out.println(personaDaoImpl.slect(3l));
     }
 }
