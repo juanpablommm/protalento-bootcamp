@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar app-web/target/dependency/webapp-runner.jar --port $PORT practica-semana-15/target/*.war
+web: java $JAVA_OPTS -jar practica-semana-15/target/dependency/webapp-runner.jar --port $PORT practica-semana-15/target/*.war
