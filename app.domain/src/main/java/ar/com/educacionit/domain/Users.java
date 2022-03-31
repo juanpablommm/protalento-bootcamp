@@ -14,6 +14,10 @@ public class Users {
 		this.username = username;
 		this.password = password;
 	}
+	
+	public Users() {
+        // TODO Auto-generated constructor stub
+    }
 
 	public Long getId() {
 		return id;
