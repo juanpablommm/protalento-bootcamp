@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+input {
+	color: red;
+}
+
+/*aplico estiloss de lista*/
+/* ul li a{ */
+/* 	color: green; */
+/* 	/*quito el underline del link*/ */
+/* 	text-decoration: none; */
+
+/* 	/*establezco mayusculas en el link*/ */
+/* 	text-transform: uppercase; */
+/* } */
+
+ul li{
+	/*quito los punteros de las listas*/
+	list-style: none;
+}
+
+/*estilo por clase*/
+.novDefault li a{
+	color: green;
+	/*quito el underline del link*/
+	text-decoration: none;
+
+	/*establezco mayusculas en el link*/
+	text-transform: uppercase;
+}
+
+.novDefault{
+	color: yellowgreen;
+}
+
+#section{
+	background: yellow;
+}
+
+/*estilos de tablas*/
+.tabla{
+	/*border: 1px thin solid*/
+	background-color: goldenrod;
+}
