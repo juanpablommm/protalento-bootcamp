@@ -5,7 +5,7 @@ public enum ViewEnums {
     LOGIN("/login.jsp"),
     LOGIN_SUCCESS("/loginSuccess.jsp"),
     HOME("/index.jsp"),
-    ERROR_GENERAL("/error.jsp");
+    ERROR_GENERAL("/errorGenral.jsp");
     
     private final String view;
 
