@@ -20,7 +20,9 @@
 	<!-- nav -->
 	<jsp:include page="navbar.jsp" />
 	
+	
 	<main class="container-fluid">
+	<!-- formulario de registro -->
 		<form class="row g-3 needs-validation" action="<%=request.getContextPath() %>/RegistroServlet" method="post">
 			<div class="col-4">
 				<div class="mb-3">
@@ -34,7 +36,6 @@
 						id="exampleFormControlInput1" required name="urlImagen">
 				</div>
 				<select class="form-select" aria-label="Default select example" name="activo">
-					<option selected>Activo</option>
 					<option value="1">Abierto</option>
 					<option value="0">Cerrado</option>
 				</select>

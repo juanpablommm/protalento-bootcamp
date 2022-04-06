@@ -40,10 +40,10 @@
 					<th scope="row"><%=carrousel.getIdCarrousel()%></th>
 					<td>
 						<figure class="figure">
-							<img src="<%=carrousel.getImagen()%>" width="60%">
-							<figcaption>
-								<small><%=carrousel.getNombre()%></small>
-							</figcaption>
+							<img src="<%=carrousel.getImagen()%>" width="70%">
+							<!-- no se debe implemntar stylos en linea, pero solo
+							lo hago para no crear un stilo extenro solo para modifcar esta etiqueta -->
+							<figcaption style="font-size: 10px"><i><%=carrousel.getNombre()%></i></i></figcaption>
 						</figure>
 					</td>
 					<td><p><%=carrousel.getDescripcion()%></p></td>

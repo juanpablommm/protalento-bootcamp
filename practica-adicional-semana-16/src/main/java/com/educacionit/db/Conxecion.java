@@ -5,10 +5,10 @@ import com.educacionit.exception.GenericException;
 
 public class Conxecion {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/practica16";
-    private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "060900";
-    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String JDBC_URL = "jdbc:postgresql://ec2-54-225-190-241.compute-1.amazonaws.com:5432/d1tdc2h1dqsh5";
+    private static final String JDBC_USER = "gttlypiodntprh";
+    private static final String JDBC_PASSWORD = "96e8368cabed56e6d51209e0a5f8790c19f971e5e5ae6ca190afe8458d8122b8";
+    private static final String JDBC_DRIVER = "org.postgresql.Driver";
     
     public static Connection getConnection() throws GenericException {
         Connection connection = null;
