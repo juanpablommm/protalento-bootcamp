@@ -12,6 +12,20 @@
 	<name>practica adicional semana 16</name>
 
 	<dependencies>
+<!-- 		dirver postgresql para despriegue ne heroku -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.25</version>
+		</dependency>
+
+<!-- 		dirver postgresql para despriegue para pruebas locales -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.28</version>
+		</dependency>
+
 		<!-- APIS -->
 		<!-- jsp/servlet -->
 		<dependency>
@@ -59,7 +73,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.1</version>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
