@@ -13,11 +13,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" 
+						href="<%=request.getContextPath() + ViewsEnums.HOME.getView()%>">Listado</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
 							href="<%=request.getContextPath() + ViewsEnums.REGISTRO.getView()%>">Registrar</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Actualizar</a>
-						</li>
 					</ul>
 					<form class="d-flex">
 						<input class="form-control me-2" type="search"
