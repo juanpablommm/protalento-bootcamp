@@ -12,7 +12,8 @@ import ar.com.educacionit.domain.Socios;
 import ar.com.educacionit.domain.Users;
 import ar.com.educacionit.exceptions.GenericException;
 import ar.com.educacionit.services.LoginService;
-import ar.com.educacionit.web.enums.ViewEnums;
+import ar.com.educacionit.web.enums.ViewJSPEnums;
+import ar.com.educacionit.web.enums.ViewsKeysEnum;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class LoginServiceImpl implements LoginService {
@@ -34,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
            BCrypt.Result result = BCrypt.verifyer()
                        .verify(passwrod.getBytes(), users.getPassword().getBytes());
                if(!result.verified) {
-                   throw new ServiceException("Credenciales invalidas");
+                   throw new ServiceException(ViewsKeysEnum.USUARIO_PASSWORD_INVALID.getName());
                }
                if(users != null) {
                Socios socios = this.sociosDao.getSociosByUserId(users.getId());

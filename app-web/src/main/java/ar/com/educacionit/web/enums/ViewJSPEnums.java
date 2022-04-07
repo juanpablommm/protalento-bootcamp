@@ -1,15 +1,14 @@
 package ar.com.educacionit.web.enums;
 
-public enum ViewEnums {
+public enum ViewJSPEnums {
 
     LOGIN("/login.jsp"),
     LOGIN_SUCCESS("/loginSuccess.jsp"),
-    HOME("/index.jsp"),
-    ERROR_GENERAL("/errorGenral.jsp");
+    HOME("/index.jsp");
     
     private final String view;
 
-    private ViewEnums(String view) {
+    private ViewJSPEnums(String view) {
         this.view = view;
     }
 

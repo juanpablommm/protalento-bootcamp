@@ -1,13 +1,17 @@
 package ar.com.educacionit.web.enums;
 
-public enum LoginViewEnum {
+public enum ViewsKeysEnum {
 
     USERNAME("username"),
     PASSWORD("password"),
-    ERROR_GENERAL("errror");
+    ERROR_GENERAL("errror"),
+    USUARIO_PASSWORD_INVALID("usuario/password incorrectos"),
+    USER("user"),
+    UPLOAD_FILE("uploadFile");
+    
     private final String name;
 
-    private LoginViewEnum(String name) {
+    private ViewsKeysEnum(String name) {
         this.name = name;
     }
 
