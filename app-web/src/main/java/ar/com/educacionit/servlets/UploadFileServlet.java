@@ -13,7 +13,6 @@ import javax.servlet.http.Part;
 import ar.com.educacionit.domain.Articulos;
 import ar.com.educacionit.files.parser.CSVFileParser;
 import ar.com.educacionit.files.parser.IParser;
-import ar.com.educacionit.files.parser.XLSXFileParser;
 import ar.com.educacionit.web.enums.ViewsKeysEnum;
 
 @SuppressWarnings("serial")
@@ -36,11 +35,11 @@ public class UploadFileServlet extends HttpServlet {
 
             switch (extension) {
             case "csv":
-                parse = new CSVFileParser((File) part);
+//                parse = new CSVFileParser((File) part);
                 break;
 
             case "xlsx":
-                parse = new XLSXFileParser(extension);
+//                parse = new XLSXFileParser(extension);
                 break;
             default:
                 parse = null;
