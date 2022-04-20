@@ -54,6 +54,13 @@
 			<version>0.9.0</version>
 		</dependency>
 
+		<!-- leeer xlsx -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

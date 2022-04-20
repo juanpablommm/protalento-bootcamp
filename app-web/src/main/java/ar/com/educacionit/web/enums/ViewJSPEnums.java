@@ -4,7 +4,9 @@ public enum ViewJSPEnums {
 
     LOGIN("/login.jsp"),
     LOGIN_SUCCESS("/loginSuccess.jsp"),
-    HOME("/index.jsp");
+    HOME("/index.jsp"), 
+    UPLOAD_PREVIEW("/uploadPreview.jsp"), 
+    UPLOAD("/uploadPreview.jsp");
     
     private final String view;
 

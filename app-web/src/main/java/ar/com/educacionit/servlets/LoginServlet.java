@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
 //        capturo los parametros enviados por el html/jsp
         String userName = req.getParameter(ViewsKeysEnum.USERNAME.getName());
-        String passwor = req.getParameter(ViewsKeysEnum.USERNAME.getName());
+        String passwor = req.getParameter(ViewsKeysEnum.PASSWORD.getName());
         
         ViewJSPEnums target = ViewJSPEnums.LOGIN_SUCCESS;
 
@@ -57,6 +57,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     private boolean isValid(String userName, String passwor) {
-        return (userName != null  && !userName.isBlank()) || (passwor != null && !passwor.isBlank());
+        return (userName != null  && !userName.isBlank()) && (passwor != null && !passwor.isBlank());
     }
 }

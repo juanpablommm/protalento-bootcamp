@@ -7,7 +7,8 @@ public enum ViewsKeysEnum {
     ERROR_GENERAL("errror"),
     USUARIO_PASSWORD_INVALID("usuario/password incorrectos"),
     USER("user"),
-    UPLOAD_FILE("uploadFile");
+    UPLOAD_FILE("uploadFile"), 
+    UPLOAD_PREVIEW_KEY("upload_preview_key");
     
     private final String name;
 

@@ -23,7 +23,7 @@
             <h1>Cargar Archivo</h1>
             <div class="col">
                 <!-- cargar archivo -->
-                <form action="<%=request.getContextPath()%>/UploadFileServlet" method="post">
+                <form action="<%=request.getContextPath()%>/controllers/UploadFileServlet" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                       <label for="formFile" class="form-label">Cargar archivo de Productos (CSV | XLSX)</label>
                       <input class="form-control"  name="<%=ViewsKeysEnum.UPLOAD_FILE.getName()%>" type="file" id="formFile">                      

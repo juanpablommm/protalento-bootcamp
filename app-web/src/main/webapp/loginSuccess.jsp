@@ -34,7 +34,7 @@ Users users = (Users) session.getAttribute(ViewsKeysEnum.USER.getName());
 							Apellido:
 							<%=users.getSocio().getApellido()%></h3>
 
-						<a href="<%=request.getContextPath()%>/BuscarProductosServlet">Ver
+						<a href="<%=request.getContextPath()%>/controllers/BuscarProductosServlet">Ver
 							listado</a>
 					</hgroup>
 				</div>

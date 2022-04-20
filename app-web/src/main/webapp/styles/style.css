@@ -1,50 +1,53 @@
-@charset "ISO-8859-1";
-
-input {
-	color: red;
+.bb, .bb::before, .bb::after {
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 left: 0;
+	 right: 0;
 }
-
-.imagenes{
-	width: 20%;
+ .bb {
+	 width: 200px;
+	 height: 200px;
+	 margin: auto;
+	 background: url('//blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png') no-repeat 50% / 70% rgba(0, 0, 0, .1);
+	 color: #69ca62;
+	 box-shadow: inset 0 0 0 1px rgba(105, 202, 98, .5);
 }
-
-
-/*aplico estiloss de lista*/
-/* ul li a{ */
-/* 	color: green; */
-/* 	/*quito el underline del link*/ */
-/* 	text-decoration: none; */
-
-/* 	/*establezco mayusculas en el link*/ */
-/* 	text-transform: uppercase; */
-/* } */
-
-ul li{
-	/*quito los punteros de las listas*/
-	list-style: none;
+ .bb::before, .bb::after {
+	 content: '';
+	 z-index: -1;
+	 margin: -5%;
+	 box-shadow: inset 0 0 0 2px;
+	 animation: clipMe 8s linear infinite;
 }
-
-/*estilo por clase*/
-.novDefault li a{
-	color: green;
-	/*quito el underline del link*/
-	text-decoration: none;
-
-	/*establezco mayusculas en el link*/
-	text-transform: uppercase;
+ .bb::before {
+	 animation-delay: -4s;
 }
-
-.novDefault{
-	color: yellowgreen;
+ .bb:hover::after, .bb:hover::before {
+	 background-color: rgba(255, 0, 0, .3);
 }
-
-#section{
-	background: yellow;
+ @keyframes clipMe {
+	 0%, 100% {
+		 clip: rect(0px, 220px, 2px, 0px);
+	}
+	 25% {
+		 clip: rect(0px, 2px, 220px, 0px);
+	}
+	 50% {
+		 clip: rect(218px, 220px, 220px, 0px);
+	}
+	 75% {
+		 clip: rect(0px, 220px, 220px, 218px);
+	}
 }
-
-/*estilos de tablas*/
-.tabla{
-	/*border: 1px thin solid*/
-	background-color: goldenrod;
+ html, body {
+	 height: 100%;
 }
-
+ body {
+	 position: relative;
+	 background-color: #0f222b;
+}
+ *, *::before, *::after {
+	 box-sizing: border-box;
+}
+ 
