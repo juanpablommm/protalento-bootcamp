@@ -85,13 +85,13 @@ public class CarrouselDaoImplPostgret implements ICarrouselDao{
     @Override
     public void update(Long id, Carrousel carrousel) throws GenericException {
         if(id != null && carrousel != null) {
-            String sql = "UPDATE FROM carrousel SET nombre = ?, descripcion = ?, "
-                    + "imagen = ?, activo = ? WHERE id_carrosel =" + id;
+            String sql = "UPDATE carrousel SET descripcion = ?, "
+                    + "imagen = ?, activo = ? WHERE id_carrousel =" + id;
             try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)){
-                preparedStatement.setString(1, carrousel.getNombre());
-                preparedStatement.setString(2, carrousel.getDescripcion());
-                preparedStatement.setString(3, carrousel.getImagen());
-                preparedStatement.setLong(4, carrousel.getActivo());
+//                preparedStatement.setString(1, carrousel.getNombre());
+                preparedStatement.setString(1, carrousel.getDescripcion());
+                preparedStatement.setString(2, carrousel.getImagen());
+                preparedStatement.setLong(3, carrousel.getActivo());
                 preparedStatement.execute();
             } catch (SQLException | GenericException e) {
                 throw new GenericException("Error!! en " + sql, e);
@@ -100,4 +100,18 @@ public class CarrouselDaoImplPostgret implements ICarrouselDao{
             throw new GenericException("Error!! el id, carrusel no puede ser null...");
         }
     }
+
+//    @Override
+//    public List<String> selectWhereImages() throws GenericException {
+//        String sql = "SELECT imagen FROM carrousel";
+//        List<String> list = new ArrayList<String>();
+//        try(PreparedStatement preparedStatement = getConnection().prepareStatement(sql);
+//                ResultSet resultSet = preparedStatement.executeQuery();){
+//            while (resultSet.next()) {
+//                list.add(resultSet.getString("imagen"));
+//            }
+//        } catch (SQLException e) {
+//            throw new GenericException("Error!! en " + sql, e);
+//        }return list;
+//    }
 }

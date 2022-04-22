@@ -6,6 +6,7 @@ public enum ViewsEnums {
     HOME("/index.jsp"),
     REGISTRO("/registro.jsp"),
     ACTUALIZAR("/actualizar.jsp"),
+    ACTUALIZAR_IMAGENES("/listadoImagenes.jsp"),
     ESTADO("/estado.jsp");
     
     private final String view;

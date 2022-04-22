@@ -5,16 +5,11 @@
 <%@page import="java.util.List"%>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="description"
-	content="bootcamp educacion it, java developer practica semana 16">
-<meta name="keywprds" content="java, html, jsp, servlets">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<jsp:include page="metasAndLinks.jsp"/>
 <!-- rediriciono al index de la aplicacion -->
 <meta http-equiv="Refresh" content="7; <%=request.getContextPath() + ViewsEnums.HOME.getView()%>"/><!-- redirigir al listado -->
-<title>Successful</title>
-<link rel="stylesheet" href="./styles/bootstrap.min.css">
+<title>Estatus</title>
 </head>
 <body>
 <!-- obtengo el mensaje que venga desdes los servlets -->
@@ -24,8 +19,9 @@
 	</header>
 	<main class="container-fluid">
 		<header class="row">
-			<p>Se le redicionara al listado de registros...</p>
+			<p class="texto">Se le redicionara al listado de registros...</p>
 		</header>
 	</main>
 </body>
+<jsp:include page="footer.jsp"/>
 </html>

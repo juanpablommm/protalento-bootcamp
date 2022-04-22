@@ -4,13 +4,8 @@
 <%@page import="java.util.List"%>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="description"
-	content="bootcamp educacion it, java developer practica semana 16">
-<meta name="keywprds" content="java, html, jsp, servlets">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="metasAndLinks.jsp" />
 <title>Listado</title>
-<link rel="stylesheet" href="./styles/bootstrap.min.css">
 </head>
 <body>
 	<header class="container-fluid">
@@ -40,10 +35,8 @@
 					<th scope="row"><%=carrousel.getIdCarrousel()%></th>
 					<td>
 						<figure class="figure">
-							<img src="<%=carrousel.getImagen()%>" width="70%">
-							<!-- no se debe implemntar stylos en linea, pero solo
-							lo hago para no crear un stilo extenro solo para modifcar esta etiqueta -->
-							<figcaption style="font-size: 10px"><i><%=carrousel.getNombre()%></i></i></figcaption>
+							<img src="<%=carrousel.getImagen()%>" width="90%"/>
+							<figcaption><i><%=carrousel.getNombre()%></i></figcaption>
 						</figure>
 					</td>
 					<td><p><%=carrousel.getDescripcion()%></p></td>
@@ -56,4 +49,5 @@
 		</table>
 	</main>
 </body>
+<jsp:include page="footer.jsp"/>
 </html>

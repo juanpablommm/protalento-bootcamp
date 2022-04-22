@@ -1,44 +1,40 @@
 @charset "ISO-8859-1";
 
-input {
-	color: red;
+
+img{
+	border-radius: 20px;
+	border: 1px solid #65F228;
+
 }
 
-/*aplico estiloss de lista*/
-/* ul li a{ */
-/* 	color: green; */
-/* 	/*quito el underline del link*/ */
-/* 	text-decoration: none; */
-
-/* 	/*establezco mayusculas en el link*/ */
-/* 	text-transform: uppercase; */
-/* } */
-
-ul li{
-	/*quito los punteros de las listas*/
-	list-style: none;
+main, header, textarea, input, select, div, body{
+	 background-color: #0f222b;
+	 color: white;
+}
+.texto, textarea, label, input, select, th, ul, figure, h1, td{
+	border-color: white;
+	color: white;
+	
+}
+textarea, select{
+	border-radius: 10px;
+	border-style: dotted;
+	border-color:#65F228;
+}
+input{
+	border-style: dotted solid double dashed;
 }
 
-/*estilo por clase*/
-.novDefault li a{
-	color: green;
-	/*quito el underline del link*/
-	text-decoration: none;
-
-	/*establezco mayusculas en el link*/
-	text-transform: uppercase;
+a{
+	color: white;
 }
 
-.novDefault{
-	color: yellowgreen;
+boton-nav{
+	background-color: white;
 }
 
-#section{
-	background: yellow;
-}
+i{
+	font-size: 10px
 
-/*estilos de tablas*/
-.tabla{
-	/*border: 1px thin solid*/
-	background-color: goldenrod;
-}
+	
+} 

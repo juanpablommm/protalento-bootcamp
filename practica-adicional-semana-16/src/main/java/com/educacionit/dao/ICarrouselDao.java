@@ -16,4 +16,6 @@ public interface ICarrouselDao {
     public abstract void deletet(Long id) throws GenericException;
     
     public abstract void update(Long id, Carrousel carrousel) throws GenericException;
+    
+//    public abstract List<String> selectWhereImages() throws GenericException;
 }
