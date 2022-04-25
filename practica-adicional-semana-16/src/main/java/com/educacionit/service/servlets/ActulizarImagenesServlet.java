@@ -23,10 +23,11 @@ public class ActulizarImagenesServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String  descripcion = req.getParameter("descripcion");
         String url = req.getParameter("url");
+        String nombre = req.getParameter("nombre");
         Long activo = Long.parseLong(req.getParameter("activo"));
         Long id = Long.parseLong(req.getParameter("id_carrousel"));
         
-        Carrousel carrousel = new Carrousel(null, descripcion, url, activo);
+        Carrousel carrousel = new Carrousel(nombre, descripcion, url, activo);
         ICarrouselService service = new CarrouselServiceImlp();
         
         ViewsEnums view = ViewsEnums.ESTADO;
