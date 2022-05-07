@@ -1,12 +1,15 @@
 package ar.com.educacionit.web.enums;
 
-public enum ViewJSPEnums {
+public enum ViewJSPEnums implements IEnumerable{
 
     LOGIN("/login.jsp"),
     LOGIN_SUCCESS("/loginSuccess.jsp"),
     HOME("/index.jsp"), 
     UPLOAD_PREVIEW("/uploadPreview.jsp"), 
-    UPLOAD("/uploadPreview.jsp");
+    UPLOAD("/upload.jsp"),
+    RESULTADO_PREVIEW("/resultadoPreview.jsp"),
+    LISTADO_GENERAL("/listadoGeneral.jsp"),
+    RESULT_PREVIEW("/resultadoPreview.jsp");
     
     private final String view;
 
@@ -16,5 +19,10 @@ public enum ViewJSPEnums {
 
     public String getView() {
         return view;
+    }
+
+    @Override
+    public String getParam() {
+        return this.getView();
     }
 }

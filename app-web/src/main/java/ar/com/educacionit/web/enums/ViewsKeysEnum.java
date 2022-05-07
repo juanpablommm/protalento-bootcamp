@@ -1,6 +1,6 @@
 package ar.com.educacionit.web.enums;
 
-public enum ViewsKeysEnum {
+public enum ViewsKeysEnum implements IEnumerable{
 
     USERNAME("username"),
     PASSWORD("password"),
@@ -8,7 +8,10 @@ public enum ViewsKeysEnum {
     USUARIO_PASSWORD_INVALID("usuario/password incorrectos"),
     USER("user"),
     UPLOAD_FILE("uploadFile"), 
-    UPLOAD_PREVIEW_KEY("upload_preview_key");
+    UPLOAD_PREVIEW_KEY("upload_preview_key"), 
+    ARTICULOS_OK("articulos_ok"),
+    ARTICULOS_FAILS("articulos_fails"), 
+    FORMATO("typeFile");
     
     private final String name;
 
@@ -18,5 +21,10 @@ public enum ViewsKeysEnum {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getParam() {
+        return this.getName();
     }
 }

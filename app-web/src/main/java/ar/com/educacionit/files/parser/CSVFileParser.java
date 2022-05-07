@@ -26,7 +26,7 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
     }
 
     // implementar el metodo generico, PERO, dandole un tipo concreto
-    public Collection<Articulos> parse() throws ParseException, IOException{
+    public Collection<Articulos> parse() throws ParseException{
         InputStream inputStream = null;
         BufferedReader bufferedReader = null;
         FileReader fileReader = null;
@@ -44,11 +44,16 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
                 bufferedReader = new BufferedReader(null);
             }
            articulos = this.buildArchivos(bufferedReader);
-        } finally {
+           
+        }catch (IOException e) {
+           throw new ParseException(e.getMessage(), e);
+        }finally {
             if (bufferedReader != null) {
-                bufferedReader.close();
-            }if (fileReader != null) {
-                fileReader.close();
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    throw new ParseException(e.getMessage(), e);
+                }
             }
         }
         return articulos;
@@ -72,7 +77,7 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
             //crear un validador para las celdas del archivo
             //Validador.getValidar(Enum.paraArticulo).validate(datos);
             
-            Articulos unArticulo = new Articulos(titulo, null, codigo, precio, stock, marca, categoria);
+            Articulos unArticulo = new Articulos(titulo, new Date(), codigo, precio, stock, marca, categoria);
             articulos.add(unArticulo);
             lineaLeida = br.readLine();
         }return articulos;

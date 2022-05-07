@@ -34,7 +34,14 @@ public class UploadFileServlet extends BaseServlet {
 
         ViewJSPEnums target = ViewJSPEnums.UPLOAD_PREVIEW;
 //        comparmos que el archivo que cargen tenga una longitud mayor a cero
-        if (part.getSize() > 0) {
+        
+        //validamos si ahy un error con el archivo
+        if (part == null || part.getSize() == 0) {
+            target = ViewJSPEnums.UPLOAD;
+            super.addAtribute(req, ViewsKeysEnum.ERROR_GENERAL, "Debe Cargar un Archivo");
+            super.redirect(target, req, resp);
+        }
+        
             // de esta manera reperamos de manera segura el nombre del archivo que cargen
             String file = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 
@@ -57,7 +64,7 @@ public class UploadFileServlet extends BaseServlet {
             if (parse != null) {
                 try {
                     Collection<Articulos> articulos = parse.parse();
-                    super.addAtribute(req, ViewsKeysEnum.UPLOAD_PREVIEW_KEY, articulos);
+                    super.addAtribute(req.getSession(), ViewsKeysEnum.UPLOAD_PREVIEW_KEY, articulos);
                 } catch (ParseException e) {
 //                    req.setAttribute(ViewsKeysEnum.ERROR_GENERAL.getName(), e.getMessage());
                     super.addAtribute(req, ViewsKeysEnum.ERROR_GENERAL, e.getMessage());
@@ -71,7 +78,6 @@ public class UploadFileServlet extends BaseServlet {
             super.redirect(target, req, resp);
         }
 
-    }
 
     private String getExtension(String fileName) {
         String extension = fileName.substring(fileName.indexOf(".") + 1, fileName.length());
