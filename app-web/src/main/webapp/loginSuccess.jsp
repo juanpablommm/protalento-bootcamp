@@ -11,7 +11,7 @@ Users users = (Users) session.getAttribute(ViewsKeysEnum.USER.getName());
 <html>
 <head>
 <jsp:include page="styles.jsp" />
-<title>Insert title here</title>
+<title>System</title>
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
@@ -33,10 +33,9 @@ Users users = (Users) session.getAttribute(ViewsKeysEnum.USER.getName());
 						<h3>
 							Apellido:
 							<%=users.getSocio().getApellido()%></h3>
-
+					</hgroup>
 						<a href="<%=request.getContextPath()%>/controllers/BuscarProductosServlet">Ver
 							listado</a>
-					</hgroup>
 				</div>
 			</div>
 		</section>

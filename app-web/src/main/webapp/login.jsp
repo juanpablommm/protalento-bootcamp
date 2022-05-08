@@ -19,24 +19,26 @@
 
 		<!-- section principal -->
 		<section class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-6">
+			<div class="row">
+				<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8" id="bloqueLogin">
 					<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label">Usser</label>
 							<input type="text" name="<%=ViewsKeysEnum.USERNAME.getName()%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-							<div id="emailHelp" class="form-text">Bienbeido al sistema ingresa tu usuario...</div>
+							<div id="emailHelp" class="form-text">Bienvenido al sistema ingresa su usuario...</div>
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword1" class="form-label">Password</label>
 							<input type="password" name="<%=ViewsKeysEnum.PASSWORD.getName()%>" class="form-control" id="exampleInputPassword1">
 						</div>
-						<div class="mb-3 form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1">Check me out</label>
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-outline-success me-2">Submit</button>
 					</form>
+				</div>
+				<div class="col" id="bloqueLoginImg">
+					<figure>
+						<img alt="" src="<%=request.getContextPath()%>/img/ImagenLogin.gif" width="70%">
+						<figcaption>B. Java Developer</figcaption>
+					</figure>
 				</div>
 			</div>
 		</section>

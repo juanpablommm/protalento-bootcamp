@@ -18,7 +18,7 @@
           <jsp:include page="alertas.jsp"></jsp:include>
 
           <!-- section principal -->
-          <section class="container">
+          <section class="container-fluid">
            <div class="row d-flex justify-content-center">
             <h1>Cargar Archivo</h1>
             <div class="col">

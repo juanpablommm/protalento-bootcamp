@@ -4,7 +4,7 @@
 <%@page import="ar.com.educacionit.web.enums.ViewsKeysEnum"%>
 <%@page import="ar.com.educacionit.domain.Articulos"%>
 <%@page import="java.util.Collection"%>
-<table class="table">
+<table class="table table-dark table-hover">
 	<thead>
 		<tr>
 			<th scope="col">Titulo</th>

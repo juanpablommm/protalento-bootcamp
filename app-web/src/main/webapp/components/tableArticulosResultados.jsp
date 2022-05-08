@@ -5,10 +5,10 @@
 <%@page import="ar.com.educacionit.domain.Articulos"%>
 <%@page import="java.util.Collection"%>
 
-<h1>Archivos Procesados</h1>
+<h1 class="tituloArticulosProcesados">Archivos Procesados</h1>
 <div class="row">
 <div class="col-12">
-<table class="table">
+<table class="table table-dark table-hover">
 	<thead>
 		<tr>
 			<th scope="col">Titulo</th>
@@ -46,8 +46,8 @@
 
 <div class="row">
 <div class="col-12">
-<h2>Articulos No Procesados</h2>
-<table class="table">
+<h1 class="tituloArticulosNoProcesados">Articulos No Procesados</h1>
+<table class="table table-dark table-hover">
 	<thead>
 		<tr>
 			<th scope="col">Titulo</th>
