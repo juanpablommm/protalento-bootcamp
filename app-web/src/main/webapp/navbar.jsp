@@ -39,8 +39,8 @@ if (user != null) {
 					</form>
 				</li>
 			</ul>
-			<form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search"
+			<form class="d-flex" action="<%=request.getContextPath()%>/controllers/BuscarProductosServlet">
+				<input class="form-control me-2" type="search" name="<%=ViewsKeysEnum.KEYWORD.getParam()%>" placeholder="Search"
 					aria-label="Search">
 				<button class="btn btn-outline-success" type="submit">Buscar</button>
 			</form>

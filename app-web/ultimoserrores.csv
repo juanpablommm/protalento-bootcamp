@@ -1,0 +1,3 @@
+id;titulo;fechaCreacion;codigo;precio;stock;marcasId;marcas;categoriasId;categoria;
+1;titulo1;Mon May 02 00:00:00 COT 2022;tito00;1500.0;5;1;null;1;null;
+6;titulo2;Fri May 06 00:00:00 COT 2022;tito20;1200.0;2;2;null;2;null;

@@ -11,7 +11,9 @@ public enum ViewsKeysEnum implements IEnumerable{
     UPLOAD_PREVIEW_KEY("upload_preview_key"), 
     ARTICULOS_OK("articulos_ok"),
     ARTICULOS_FAILS("articulos_fails"), 
-    FORMATO("typeFile");
+    FORMATO("typeFile"), 
+    LISTADO("listado"), 
+    KEYWORD("keyword");
     
     private final String name;
 

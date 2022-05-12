@@ -20,4 +20,5 @@ public interface GenericDao<T> {
 	public List<T> findAll() throws GenericException;
 	
 	public List<T> findBySQL(String sql) throws GenericException;
+	
 }

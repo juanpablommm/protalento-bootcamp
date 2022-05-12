@@ -3,9 +3,11 @@ package ar.com.educacionit.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import ar.com.educacionit.dao.ArticuloDao;
 import ar.com.educacionit.domain.Articulos;
+import ar.com.educacionit.exceptions.GenericException;
 
 public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements ArticuloDao {
 
@@ -49,7 +51,11 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 		preparedStatement.setLong(5, entity.getCategoriasId());
 		
 	}
-
 	
+	@Override
+	public List<Articulos> findBySQL(String sql) throws GenericException {
+	    String where = "SELECT FROM articulos WHERE titulo like '%" + sql + "%'";
+	    return super.findBySQL(where);
+	}
 
 }

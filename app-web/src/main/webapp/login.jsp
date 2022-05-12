@@ -7,6 +7,35 @@
 	<title>Login</title>
 	<!-- importo mi jsp externa la cual contiene todas la hojas de stylos css -->
 	<jsp:include page="styles.jsp"></jsp:include>
+	
+	<!--funcion javascrip para validar el action
+	de un formulario dependiendo del boton presionado -->
+	<script type="text/javascript">
+	function send(){
+		/*obtenemos el primer formulario del html*/
+		const formulario = document.forms[0];
+
+		const objectLogin = {
+			username : document.getElementById("user").value,
+			password : document.getElementById("password").value
+		};
+		
+		formulario.method = "post";
+		/*objecto nativo de javascript JSON
+		metodos:
+			
+		JSON.parse(obj) : obj de javascript
+		JSON.stringify(obj): : objecto JSON*/
+// 		alert(JSON.stringify(objectLogin));
+
+		/*traigo mi intput que estaba escondido en el html
+		por medio del atributo hidden y le asigno como valor
+		el objecto JSON*/
+		document.getElementById("data").value = JSON.stringify(objectLogin);
+		//llamo al metodo submit
+		formulario.submit();
+	}
+</script>
 </head>
 <body>
 
@@ -23,15 +52,17 @@
 				<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8" id="bloqueLogin">
 					<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
 						<div class="mb-3">
+							<!--inpput escondido para enviar el object JSON-->
+							<input type="hidden" name="data" id="data">
 							<label for="exampleInputEmail1" class="form-label">Usser</label>
-							<input type="text" name="<%=ViewsKeysEnum.USERNAME.getName()%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+							<input type="text" class="form-control" id="user" aria-describedby="emailHelp">
 							<div id="emailHelp" class="form-text">Bienvenido al sistema ingresa su usuario...</div>
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword1" class="form-label">Password</label>
-							<input type="password" name="<%=ViewsKeysEnum.PASSWORD.getName()%>" class="form-control" id="exampleInputPassword1">
+							<input type="password" class="form-control" id="password">
 						</div>
-						<button type="submit" class="btn btn-outline-success me-2">Submit</button>
+						<button type="button" class="btn btn-outline-success me-2" onclick="send()">Enviar</button>
 					</form>
 				</div>
 				<div class="col" id="bloqueLoginImg">

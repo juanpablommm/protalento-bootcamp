@@ -13,6 +13,7 @@ import ar.com.educacionit.domain.Articulos;
 import ar.com.educacionit.services.ArticulosServices;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ArticulosServicesImpl;
+import ar.com.educacionit.web.enums.ViewsKeysEnum;
 
 @WebServlet("/ListadoServlet")
 //creamos una anotacion para poder que esta clase
@@ -49,7 +50,7 @@ public class ListadoServlet extends HttpServlet {
 //                con el metodo setAtribute logramos esto, psar nuestro objeto, este recibe dos
 //                parametros el primero es el string con el nombre que le demos, para poder consultarlo
 //                en donde lo enviemos y el segundo es el objeto, algo parecido a un mapa, con clave y valor
-                req.setAttribute("LISTADO", collectionArticulos);
+                req.setAttribute(ViewsKeysEnum.LISTADO.getParam(), collectionArticulos);
                 
                 //ahora enviamos a la otra pagina y le psa lacollections que enviamos
                 getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);

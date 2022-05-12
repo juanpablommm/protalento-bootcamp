@@ -83,7 +83,7 @@
 </div>
 <div class="row">
 	<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 col-xxl-2">
-		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorServlet>" method="post" class="row g-3 needs-validation" novalidate target="_new">
+		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorServlet" method="post" class="row g-3 needs-validation" novalidate target="_new">
 			<label for="validationCustom04" class="form-label">State</label> 
 			<select name="typeFile" class="form-select" id="validationCustom04" required>
 				<option selected disabled value="">Elegir Formato</option>
@@ -91,10 +91,7 @@
 				<option value="csv">CSV</option>
 				<option value="xlsx">XLSX</option>
 			</select> 
-			<a class="btn btn-outline-success me-2"
-				href="<%=request.getContextPath()%>/controllers/CargarProductoServlet"
-				role="button">Generar Reporte
-			</a>
+			<button class="btn btn-outline-success me-2" type="submit">Generar Archivo</button>
 		</form>
 	</div>
 </div>

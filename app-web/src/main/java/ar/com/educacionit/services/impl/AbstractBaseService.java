@@ -65,4 +65,13 @@ public class AbstractBaseService<T> implements GenericService<T>{
 			throw new ServiceException("Error consultando listado ", e);
 		}
 	}
+
+    @Override
+    public List<T> findAllBy(String keyWord) throws ServiceException {
+        try {
+            return genericDao.findBySQL(keyWord);
+        } catch (GenericException e) {
+            throw new ServiceException("Error consultando listado ", e);
+        }
+    }
 }
