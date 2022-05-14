@@ -49,6 +49,11 @@
 		<!-- section principal -->
 		<section class="container">
 			<div class="row">
+				<div class="col-12 mb-3">
+					<h1 class="mb-3">Login</h1>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8" id="bloqueLogin">
 					<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
 						<div class="mb-3">

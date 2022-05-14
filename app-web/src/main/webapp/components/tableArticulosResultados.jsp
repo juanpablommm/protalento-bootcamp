@@ -86,7 +86,7 @@
 		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorServlet" method="post" class="row g-3 needs-validation" novalidate target="_new">
 			<label for="validationCustom04" class="form-label">State</label> 
 			<select name="typeFile" class="form-select" id="validationCustom04" required>
-				<option selected disabled value="">Elegir Formato</option>
+				<option selected disabled value="null">Elegir Formato</option>
 				<option value="pdf">PDF</option>
 				<option value="csv">CSV</option>
 				<option value="xlsx">XLSX</option>

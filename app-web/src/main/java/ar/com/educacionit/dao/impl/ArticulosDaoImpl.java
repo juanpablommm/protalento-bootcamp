@@ -54,7 +54,7 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 	
 	@Override
 	public List<Articulos> findBySQL(String sql) throws GenericException {
-	    String where = "SELECT FROM articulos WHERE titulo like '%" + sql + "%'";
+	    String where = "SELECT * FROM articulos WHERE titulo like '%" + sql + "%'";
 	    return super.findBySQL(where);
 	}
 

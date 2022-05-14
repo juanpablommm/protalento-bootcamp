@@ -19,26 +19,26 @@
 		<jsp:include page="alertas.jsp"></jsp:include>
 
 		<!-- section principal -->
-		<section class="container">
+		<section class="container-fluid">
 			<div class="row">
-				<div class="col-12- col-sm-3 col-md-4 col-ls-4 col-xl-4 col-xxl-4">
+				<div class="col-12- col-sm-12 col-md-4 col-ls-4 col-xl-4 col-xxl-4">
 					<form>
 						<div class="mb-3">
-							<label for="disabledTextInput" class="form-label">Disabled
-								input</label> <input type="text"
+							<label for="disabledTextInput" class="form-label">Titulo</label> <input type="text"
 								class="form-control">
 						</div>
 						<div class="mb-3">
-							<label for="disabledSelect" class="form-label">Disabled
-								select menu</label> <select class="form-select">
-								<option>Disabled select</option>
+							<label for="disabledSelect" class="form-label">Orden de filtrado</label> <select class="form-select">
+								<option>Seleccione el orden...</option>
+								<option>ASC</option>
+								<option>DSC</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary">Filtrar</button>
 					</form>
 				</div>
 				<div class="col">
-					<h1 class="tituloArticulosNoProcesados">Listado de Articulos</h1>
+					<h1 class="tituloArticulosGeneral">Listado de Articulos</h1>
 					<table class="table table-dark table-hover">
 						<thead>
 							<tr>

@@ -1,25 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>protalento-bootcamp</groupId>
-  <version>0.0.1-SNAPSHOT</version>
-  <artifactId>app-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>primer artefacto creado con maven+eclipse+github</name>
-  
-  
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>protalento-bootcamp</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>app-parent</artifactId>
+	<packaging>pom</packaging>
+	<name>primer artefacto creado con maven+eclipse+github</name>
+
+
+	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-  
-  <modules>
-  	 <!-- <module>pruebas</module> -->	
-  	<module>app-web</module>
-  <!--  <module>practica-adicional-semana9</module> -->	
-  	 <!-- <module>practica-adicional-semana11</module> -->
-  	<module>app.domain</module>
-  <!--	<module>practica-adicional-semana13</module> -->	
-<!--   <module>practica-adicional-semana-16</module> -->
-  </modules>
-  
+
+	<modules>
+		<!-- <module>pruebas</module> -->
+		<module>app-web</module>
+		<!-- <module>practica-adicional-semana9</module> -->
+		<!-- <module>practica-adicional-semana11</module> -->
+		<module>app.domain</module>
+		<!-- <module>practica-adicional-semana13</module> -->
+		<!-- <module>practica-adicional-semana-16</module> -->
+	</modules>
+
 </project>

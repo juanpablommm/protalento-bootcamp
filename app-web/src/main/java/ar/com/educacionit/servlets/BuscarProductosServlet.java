@@ -41,7 +41,7 @@ public class BuscarProductosServlet extends HttpServlet{
 //            }
             List<Articulos> list = service.findAllBy(KeyWord);
             
-            req.setAttribute(ViewsKeysEnum.LISTADO.getParam(), list);
+            req.getSession().setAttribute(ViewsKeysEnum.LISTADO.getParam(), list);
             getServletContext().getRequestDispatcher(ViewJSPEnums.LISTADO_GENERAL.getParam()).forward(req, resp);
         } catch (ServiceException e) {
             e.printStackTrace();

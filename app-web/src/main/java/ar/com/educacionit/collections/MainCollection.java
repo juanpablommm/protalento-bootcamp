@@ -44,7 +44,7 @@ public class MainCollection {
 //			nombres.remove(nombre);
 //		}
 
-//		buscar sin alterar el tamño de la colletion
+//		buscar sin alterar el tamno de la colletion
 		for(String nombr: nombres) {
 			if(nombr.equalsIgnoreCase("juan")) {
 				nombr = new String("jose");
