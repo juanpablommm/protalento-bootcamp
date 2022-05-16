@@ -6,19 +6,15 @@
 <html lang="es">
 <head>
 <title>Listado</title>
-<!-- importo mi jsp externa la cual contiene todas la hojas de stylos css -->
 <jsp:include page="styles.jsp"></jsp:include>
 </head>
 <body>
 
-	<!-- importo mi jps externa que contine el nav -->
 	<jsp:include page="navbar.jsp"></jsp:include>
 
 	<main>
-		<!-- section para alertas para mostrar errores -->
 		<jsp:include page="alertas.jsp"></jsp:include>
 
-		<!-- section principal -->
 		<section class="container-fluid">
 			<div class="row">
 				<div class="col-12- col-sm-12 col-md-4 col-ls-4 col-xl-4 col-xxl-4">
@@ -48,6 +44,7 @@
 								<th scope="col">Stock</th>
 								<th scope="col">Marca-ID</th>
 								<th scope="col">Categoria-ID</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -66,18 +63,52 @@
 								<td><%=articulo.getStock()%></td>
 								<td><%=articulo.getMarcasId()%></td>
 								<td><%=articulo.getCategoriasId()%></td>
+								<!-- button eliminar que lanzara un modal de bootstrap -->
+								<td>
+									<!-- Button trigger modal -->
+									<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+									onclick="guardarID(<%=articulo.getId()%>)">
+									  Eliminar
+									</button>
+								</td>
 							</tr>
 							<%
 							}
 							%>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td>Total:</td>
+								<td colspan="5"><%=request.getSession().getAttribute(ViewsKeysEnum.VALOR_TOTAL.getParam())%></td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 			</div>
 		</section>
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="staticBackdropLabel">Eliminar</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        ¿Seguro quieres eliminar este registro?
+			      </div>
+			      <div class="modal-footer">
+			      	<form action="<%=request.getContextPath()%>/controllers/EliminarArticuloServlet" method="post" id="formEliminar">
+			      		<input type="hidden" name="id" id="<%=ViewsKeysEnum.ID_ELIMINAR.getParam()%>">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				        <button type="submit" class="btn btn-primary">Confirmar</button>
+			      	</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 	</main>
-
-	<!-- importo mi jsp que contien la parte javascrip de bootrat -->
 	<jsp:include page="js/scripts.jsp"></jsp:include>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/listadoGeneral.js"></script>
 </body>
 </html>

@@ -1,8 +1,6 @@
 package ar.com.educacionit.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,35 +16,26 @@ import ar.com.educacionit.services.impl.ArticulosServicesImpl;
 import ar.com.educacionit.web.enums.ViewJSPEnums;
 import ar.com.educacionit.web.enums.ViewsKeysEnum;
 
+@SuppressWarnings("serial")
 @WebServlet("/controllers/BuscarProductosServlet")
 public class BuscarProductosServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        String limit = req.getParameter("limit");
-//        String offset = req.getParameter("offset");
-        
         String KeyWord = req.getParameter(ViewsKeysEnum.KEYWORD.getParam());
         
         ArticulosServices service = new ArticulosServicesImpl();
         try {
-//            List<Articulos> list = service.findAll();
-//            /*utilizamos iterator para recorrer y sacar lo que no 
-//            nos comvenga de la lista*/
-//            for (Iterator<Articulos> iterator = list.iterator(); iterator.hasNext();) {
-//                if(!iterator.next().getTitulo().contains(KeyWord)) {
-//                    iterator.remove();
-//                }
-//            }
             List<Articulos> list = service.findAllBy(KeyWord);
+            Double precioTotal = list.stream().map(x -> x.getPrecio()).reduce(0d, (x,y) -> x+y);
             
             req.getSession().setAttribute(ViewsKeysEnum.LISTADO.getParam(), list);
+            req.getSession().setAttribute(ViewsKeysEnum.VALOR_TOTAL.getParam(), precioTotal);
             getServletContext().getRequestDispatcher(ViewJSPEnums.LISTADO_GENERAL.getParam()).forward(req, resp);
         } catch (ServiceException e) {
-            e.printStackTrace();
-            List<Articulos> list = new ArrayList<Articulos>();
-            getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);
+            req.setAttribute(ViewsKeysEnum.ERROR_GENERAL.getName(), e.getMessage());
+            getServletContext().getRequestDispatcher(ViewJSPEnums.LISTADO_GENERAL.getParam()).forward(req, resp);
         }
     }
 }

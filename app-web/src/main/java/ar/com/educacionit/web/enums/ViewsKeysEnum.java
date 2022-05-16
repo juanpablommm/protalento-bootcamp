@@ -7,13 +7,16 @@ public enum ViewsKeysEnum implements IEnumerable{
     ERROR_GENERAL("errror"),
     USUARIO_PASSWORD_INVALID("usuario/password incorrectos"),
     USER("user"),
+    EXITO("exito"),
     UPLOAD_FILE("uploadFile"), 
     UPLOAD_PREVIEW_KEY("upload_preview_key"), 
     ARTICULOS_OK("articulos_ok"),
     ARTICULOS_FAILS("articulos_fails"), 
     FORMATO("typeFile"), 
     LISTADO("listado"), 
-    KEYWORD("keyword");
+    KEYWORD("keyword"),
+    VALOR_TOTAL("valor total"),
+    ID_ELIMINAR("id");
     
     private final String name;
 

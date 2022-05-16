@@ -16,6 +16,6 @@ public class PruebaCSV {
         IGenerarArchicoErrores archivo = new CSVImpl();
         ArticulosServices services = new ArticulosServicesImpl();
         List<Articulos> articulos = services.findAll();
-        archivo.makeFile("ultimoserrores", articulos);
+//        archivo.makeFile("ultimoserrores", articulos);
     }
 }
