@@ -43,10 +43,18 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T> {
 		}
 		String sql = "SELECT *FROM " + tabla + " WHERE ID = " + id;
 		T entity = null;
-		List<T> list = this.findBySQL(sql);
-		if(!list.isEmpty()) {
-		    entity = list.get(0);
-		}return entity;
+        try (Connection connection = AdministradorDeConexiones.obtenerConexion();) {
+            try (Statement statement = connection.createStatement()) {
+                try (ResultSet resultSet = statement.executeQuery(sql)) {
+                    List<T> list = DTOUtils.populateDTOs(this.clazz, resultSet);
+                    if(list != null && !list.isEmpty()) {
+                        entity = list.get(0);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new GenericException("No se pudo consultar: " + sql, e);
+        }return entity;
 	}
 
 	public void delete(Long id) throws GenericException {
