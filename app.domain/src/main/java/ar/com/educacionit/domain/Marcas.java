@@ -3,31 +3,34 @@ package ar.com.educacionit.domain;
 public class Marcas implements Entity {
 
 	private Long id;
-	private String marca;
+	private String descripcion;
 	private String codigo;
 	private Long habilitada;//1 o 0
 	
-	public Marcas(Long id, String marca, String codigo, Long habilitada) {	
+	public Marcas() {
+    }
+
+    public Marcas(Long id, String descripcion, String codigo, Long habilitada) {	
 		this.id = id;
-		this.marca = marca;
+		this.descripcion = descripcion;
 		this.codigo = codigo;
 		this.habilitada = habilitada;
 	}
 	
-	public Marcas(String marca, String codigo, Long habilitada) {
+	public Marcas(String descripcion, String codigo, Long habilitada) {
 		super();
-		this.marca = marca;
+		this.descripcion = descripcion;
 		this.codigo = codigo;
 		this.habilitada = habilitada;
 	}
 
-
-	public String getMarca() {
-		return marca;
+	
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setDescripcion(String descipcion) {
+		this.descripcion = descipcion;
 	}
 
 	public String getCodigo() {
@@ -48,18 +51,18 @@ public class Marcas implements Entity {
 
 	@Override
 	public String toString() {
-		return "Marcas [id=" + id + ", marca=" + marca + ", codigo=" + codigo + ", habilitada=" + habilitada + "]";
+		return "Marcas [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + ", habilitada=" + habilitada + "]";
 	}
 
     @Override
     public Long getId() {
         // TODO Auto-generated method stub
-        return null;
+        return this.id;
     }
 
     @Override
     public void setId(Long id) {
-        // TODO Auto-generated method stub
+        this.id = id;
         
     }
 	

@@ -2,6 +2,8 @@ package ar.com.educacionit.servlets;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
@@ -9,12 +11,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.map.HashedMap;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ar.com.educacionit.dao.impl.MarcasDaoImpl;
 import ar.com.educacionit.domain.Articulos;
+import ar.com.educacionit.domain.Categorias;
+import ar.com.educacionit.domain.Marcas;
 import ar.com.educacionit.services.ArticulosServices;
+import ar.com.educacionit.services.CategoriaService;
+import ar.com.educacionit.services.MarcasService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ArticulosServicesImpl;
+import ar.com.educacionit.services.impl.CategoriaServiceImpl;
+import ar.com.educacionit.services.impl.MarcasServiceImpl;
 import ar.com.educacionit.web.enums.ViewJSPEnums;
 import ar.com.educacionit.web.enums.ViewsKeysEnum;
 
@@ -23,6 +34,8 @@ import ar.com.educacionit.web.enums.ViewsKeysEnum;
 public class ProductoRest extends BaseServlet {
 
     private ArticulosServices services = new ArticulosServicesImpl();
+    private CategoriaService categoria = new CategoriaServiceImpl();
+    private MarcasService marcas = new MarcasServiceImpl();    
     private ObjectMapper mapper = new ObjectMapper();
 
     /* realizo la reclecion del articulo por id, atravez del verbo get */
@@ -33,10 +46,25 @@ public class ProductoRest extends BaseServlet {
 
         try {
             Articulos articulo = services.getOne(Long.parseLong(id));
-            String objectJSON = mapper.writeValueAsString(articulo);
+            //String objectJSON = mapper.writeValueAsString(articulo);
+            
+            //obtener la lista de categorrias
+            List<Categorias> listCategorias = categoria.findAll();
+            
+            //obtener la listas de marca
+            List<Marcas> listMarcas = marcas.findAll();
 
+            /*creo un mapa para que al parsearlo al JSON, quede similar
+             * a un objeto del mismo, que contenga una array de marcas
+             * y un array de categorias dentro de el*/
+            Map<String, Object> mapaObject = new HashedMap();
+            mapaObject.put("articulo", articulo);
+            mapaObject.put("categoria", listCategorias);
+            mapaObject.put("marca", listMarcas);
+            
+            String ojectJSON = mapper.writeValueAsString(mapaObject);
             // escribo en el response el objeto
-            resp.getWriter().println(objectJSON);
+            resp.getWriter().println(ojectJSON);
         } catch (ServiceException | NumberFormatException e) {
             e.printStackTrace();
         }
