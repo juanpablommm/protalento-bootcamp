@@ -16,13 +16,38 @@
 		tiene que llevar la palabra asyn antes de function*/
 		let articuloJSON = await axios.get(`<%=request.getContextPath()%>/rest/ProductoRest?id=${id}`);
 		
-		articuloJSON = articuloJSON.data; 
+		articuloJSON = articuloJSON.data;
+		const articulo = articuloJSON.articulo;
+		const categorias = articuloJSON.categoria;
+		const marcas = articuloJSON.marca;
 		
-		document.getElementById("idSpan").innerHTML = articuloJSON.id;
-		document.getElementById("idInput").value = articuloJSON.id;
-		document.getElementById("titulo").value = articuloJSON.titulo;
-		document.getElementById("precio").value = articuloJSON.precio;
-		document.getElementById("stock").value = articuloJSON.stock;
+		document.getElementById("idSpan").innerHTML = articulo.id;
+		document.getElementById("idInput").value = articulo.id;
+		document.getElementById("titulo").value = articulo.titulo;
+		document.getElementById("precio").value = articulo.precio;
+		document.getElementById("stock").value = articulo.stock;
+		llenarSelect("selectCategorias", categorias, articulo.categoria.id);
+		llenarSelect("selectMarcas", marcas, articulo.marcas.id);
+		
+		function llenarSelect(id,lista,idSelected) {
+			//tomar el select por su id
+			const select = document.getElementById(id);
+			const currentList = select.getElementsByTagName('option');
+			if(currentList.length > 0) {
+				for(const opcion of currentList) {
+					opcion.selected = +opcion.value === idSelected;
+				}
+				return;
+			}
+			//<option selected>Open this select menu</option>
+			for(const obj of lista) {
+				const opcion = document.createElement('option');
+				opcion.value = obj.id;
+				opcion.text = obj.descripcion;				
+				opcion.selected = obj.id === idSelected;
+				select.appendChild(opcion);
+			}
+		}
 		
 		const options={
 				keyboard: true
@@ -173,6 +198,18 @@
 					  <div class="mb-3">
 					  	<label for="exampleInputEmail1" class="form-label" style="color:black">Stock</label>
 					    <input type="number" class="form-control" id="stock" name="stock">
+					  </div>
+					  
+					  <div class="mb-3">
+					  	<label for="exampleInputEmail1" class="form-label" style="color:black">Categoria</label>
+					  	<select class="form-select" aria-label="Default select example" id="selectCategorias" name="selectCategorias">
+						</select>
+					  </div>
+
+					  <div class="mb-3">
+					  	<label for="exampleInputEmail1" class="form-label" style="color:black">Marca</label>
+					  	<select class="form-select" aria-label="Default select example" id="selectMarcas" name="selectMarcas">
+						</select>
 					  </div>
 					</form>
 			      </div>

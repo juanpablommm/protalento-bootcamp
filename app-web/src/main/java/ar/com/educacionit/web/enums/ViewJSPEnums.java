@@ -9,7 +9,8 @@ public enum ViewJSPEnums implements IEnumerable{
     UPLOAD("/upload.jsp"),
     RESULTADO_PREVIEW("/resultadoPreview.jsp"),
     LISTADO_GENERAL("/listadoGeneral.jsp"),
-    RESULT_PREVIEW("/resultadoPreview.jsp");
+    RESULT_PREVIEW("/resultadoPreview.jsp"), 
+    NUEVO_PRODUCTO("/nuevoProducto.jsp");
     
     private final String view;
 

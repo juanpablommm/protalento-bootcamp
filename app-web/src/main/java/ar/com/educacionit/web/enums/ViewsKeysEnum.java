@@ -16,7 +16,9 @@ public enum ViewsKeysEnum implements IEnumerable{
     LISTADO("listado"), 
     KEYWORD("keyword"),
     VALOR_TOTAL("valor total"),
-    ID_ELIMINAR("id");
+    ID_ELIMINAR("id"), 
+    MARCAS("marcas"),
+    CATEGORIAS("categorias");
     
     private final String name;
 

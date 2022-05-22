@@ -33,8 +33,8 @@ if (user != null) {
 					</form>
 				</li>
 				<li class="nav-item">
-					<form action="d-flex">
-						<button class="btn btn-outline-success me-2" type="button">Nuevo
+					<form class="d-flex" action="<%=request.getContextPath()%>/controllers/NuevoProductoServlet">
+						<button class="btn btn-outline-success me-2" type="submit">Nuevo
 							Producto</button>
 					</form>
 				</li>
